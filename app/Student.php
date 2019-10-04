@@ -7,6 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['first_name', 'last_name', 'email'];
+
+
+    // Mutators
+    // =========================================================================
+
+    /**
      * Get the student's first name.
      *
      * @param  string  $value
@@ -58,5 +69,24 @@ class Student extends Model
     public function getFullNameAttribute()
     {
         return "{$this->first_name} {$this->last_name}";
+    }
+
+    // Relationships
+    // =========================================================================
+
+    /**
+     * The shops that belong to the student.
+     */
+    public function shops()
+    {
+        return $this->belongsToMany('App\Shop')->withTimestamps();
+    }
+
+    /**
+     * Get the time punches for the student.
+     */
+    public function timePunches()
+    {
+        return $this->hasMany('App\TimePunch');
     }
 }

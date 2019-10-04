@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Shop extends Model
+class TimePunch extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -13,23 +13,14 @@ class Shop extends Model
      */
     protected $fillable = ['name', 'location', 'open_hours'];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'open_hours' => 'array',
-    ];
-
     // Relationships
     // =========================================================================
 
     /**
-     * The students that belong to the shop.
+     * Get the student that owns the time punch.
      */
-    public function students()
+    public function student()
     {
-        return $this->belongsToMany('App\Student')->withTimestamps();
+        return $this->belongsTo('App\Student');
     }
 }
