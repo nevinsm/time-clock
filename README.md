@@ -8,7 +8,7 @@ A simple time clock application to let you track student usage of a workshop.
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/nevinsm/time-clock)
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/nevinsm/time-clock/tags)
 
 ## License
 
