@@ -17,6 +17,12 @@
             <p>{{ __('Dashboard') }}</p>
         </a>
       </li>
+      <li class="nav-item{{ $activePage == 'student-management' ? ' active' : '' }}">
+            <a class="nav-link" href="{{ route('student.index') }}">
+            <span class="sidebar-mini"> SM </span>
+            <span class="sidebar-normal"> {{ __('Student Management') }} </span>
+            </a>
+        </li>
       <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
           <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
