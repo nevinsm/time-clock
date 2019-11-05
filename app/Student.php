@@ -11,7 +11,7 @@ class Student extends Model
      *
      * @var array
      */
-    protected $fillable = ['first_name', 'last_name', 'email'];
+    protected $fillable = ['first_name', 'last_name', 'email', 'is_active'];
 
 
     // Mutators

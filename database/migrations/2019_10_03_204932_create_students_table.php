@@ -17,8 +17,8 @@ class CreateStudentsTable extends Migration
             $table->bigIncrements('id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('email');
-            $table->boolean('is_active');
+            $table->string('email')->unique();
+            $table->boolean('is_active')->default(0);
             $table->timestamps();
         });
     }

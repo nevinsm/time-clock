@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Student;
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StudentRequest extends FormRequest
@@ -24,7 +26,15 @@ class StudentRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'first_name' => [
+                'required', 'min:3'
+            ],
+            'last_name' => [
+                'required', 'min:3'
+            ],
+            'email' => [
+                'required', 'email', Rule::unique((new Student)->getTable())->ignore($this->route()->student->id ?? null)
+            ]
         ];
     }
 }

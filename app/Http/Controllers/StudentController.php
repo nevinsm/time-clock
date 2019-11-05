@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Student;
-use Illuminate\Http\Request;
+use App\Http\Requests\StudentRequest;
 
 class StudentController extends Controller
 {
@@ -35,11 +35,11 @@ class StudentController extends Controller
      * @param  \App\Student $model
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Student $model)
+    public function store(StudentRequest $request, Student $model)
     {
         $model->create($request->all());
 
-        return redirect()->route('students.index')->withStatus(__('Student successfully created.'));
+        return redirect()->route('student.index')->withStatus(__('Student successfully created.'));
     }
 
     /**
@@ -71,9 +71,13 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(StudentRequest $request, Student $student)
     {
-        //
+        $student->update(
+            $request->merge(['is_active' => $request->get('is_active') ?? 0])->all()
+        );
+
+        return redirect()->route('student.index')->withStatus(__('Student successfully updated.'));
     }
 
     /**
@@ -86,6 +90,6 @@ class StudentController extends Controller
     {
         $student->delete();
 
-        return redirect()->route('students.index')->withStatus(__('Student successfully deleted.'));
+        return redirect()->route('student.index')->withStatus(__('Student successfully deleted.'));
     }
 }
